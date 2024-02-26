@@ -39,7 +39,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ 14.x }}
+        node-version: ${{ '14.x' }}
         cache: 'npm'
 
     - name: npm install, build, and test
@@ -73,6 +73,6 @@ jobs:
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: ${{JokeGPT }}
+        app-name: ${{'JokeGPT' }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
