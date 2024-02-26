@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Jokes Generator - Sign Up</title>
+  <link rel="stylesheet" href="signup-style.css">
+</head>
+<body>
+  <h1>Sign Up</h1>
+  <form id="signupForm">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" required><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+    <input type="submit" value="Sign Up">
+  </form>
+  <p>Already have an account ? <a href="alpha.html">Login</a></p>
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      // Extract form data
+      const formData = new FormData(this);
+      const username = formData.get("username");
+      const email = formData.get("email");
+      const password = formData.get("password");
+
+      // Simulated user accounts (replace with actual backend logic)
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+
+      // Check if the username or email already exists
+      const existingUser = users.find(user => user.username === username || user.email === email);
+      if (existingUser) {
+        alert("Username or email already exists. Please choose a different one.");
+        return;
+      }
+
+      // Add the new user to the list of users
+      users.push({ username, email, password });
+      localStorage.setItem("users", JSON.stringify(users));
+
+      alert("Signup successful!");
+      // Redirect to login page or perform further actions
+      // Replace "login.html" with the actual URL of your login page
+      window.location.href = "homepage.html";
+    });
+  </script>
+</body>
+</html>

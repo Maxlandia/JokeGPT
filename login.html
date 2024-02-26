@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="loginstyle.css">
+</head>
+<body>
+  <h1>Login</h1>
+  <form id="loginForm">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" required><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+    <input type="submit" value="Login">
+  </form>
+  <p> Don't have an account ? <a href="signup.html">Sign Up</a></p>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      // Extract form data
+      const formData = new FormData(this);
+      const username = formData.get("username");
+      const password = formData.get("password");
+
+      // Retrieve user credentials from localStorage
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      
+      // Check if the entered username and password match any stored user account
+      const user = users.find(user => user.username === username && user.password === password);
+      if (user) {
+        alert("Login successful!");
+        // Redirect to homepage or perform further actions
+        // Replace "index.html" with the actual URL of your homepage
+        window.location.href = "homepage.html";
+      } else {
+        alert("Incorrect username or password. Please try again.");
+      }
+    });
+  </script>
+</body>
+</html>
+
+

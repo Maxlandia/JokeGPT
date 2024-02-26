@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css"/>
+    <title>Random Joke Generator</title>
+  
+    <select id="themeDropdown">
+    <option value="light">Light Theme</option>
+    <option value="dark">Dark Theme</option>
+   </select>
+   <button onclick="changeTheme()">Apply Theme</button>
+   
+     
+  
+</head>
+
+          <!--container-->    
+<div class="container">
+        <!--heading-->
+        <h1>Dad Jokes 😆</h1>
+        <!--joke text-->
+        <p class="joke-text">
+              Joke Text Goes In Here...
+        </p>
+        <!--buttons-->
+
+    </div class="buttons">
+    <!---new joke Button-->
+    <button class="btn new-joke-btn">New Joke</button>
+    <!--.tweet Button (actually a link). No href initially -->
+    <a href=" " class="btn tweet-btn" target="_blank" rel=" https://twitter.com/intent/tweet?text=$">Tweet !!</a> 
+    </div>
+</div>
+<script type="text/javascript" src="./script.js"></script>
+    </body>
+<script>
+    if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(registration => {
+        console.log('Service Worker registered with scope:', registration.scope);
+      })
+      .catch(error => {
+        console.error('Service Worker registration failed:', error);
+      });
+  });
+}
+
+</script>
+</html>
